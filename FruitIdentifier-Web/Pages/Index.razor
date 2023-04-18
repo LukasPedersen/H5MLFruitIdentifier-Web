@@ -4,21 +4,28 @@
 
 <PageTitle>FruitIdentifier</PageTitle>
 
+<img src="@path"/>
 <InputFile OnChange="OnFileChanged" multiple></InputFile>
-<pre>@status</pre>
+<pre>Result: @status</pre>
+<pre>Result: @result</pre>
+<pre>Path: @path</pre>
+
 
 @code {
-    string? status;
+    string? status = "Awating image";
+    string? result;
+    string? path;
 
     async Task OnFileChanged(InputFileChangeEventArgs e)
     {
-        status += "\nChanged";
+        status = "Getting Image Prediction";
+        path = "C:\\Users\\Aramoniax\\Desktop\\Test images\\";
         try
         {
             var buffer = new byte[4096];
             foreach (var file in e.GetMultipleFiles(e.FileCount))
             {
-                status += "\nReading file: " + file.Name;
+                path += file.Name;
                 _ = InvokeAsync(StateHasChanged);
 
                 using var stream = file.OpenReadStream(maxAllowedSize: long.MaxValue);
@@ -28,11 +35,13 @@
                     if (read == 0)
                         break;
                 }
+                result = FruitService.GetImagePrediction(path);
+                status = "Done";
             }
         }
         catch (Exception ex)
         {
-            status += "\nError: " + ex.Message;
+            result += "\nError: " + ex.Message;
             _ = InvokeAsync(StateHasChanged);
         }
     }

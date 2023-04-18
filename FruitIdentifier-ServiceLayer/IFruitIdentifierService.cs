@@ -8,5 +8,6 @@ namespace FruitIdentifier_ServiceLayer
 {
     public interface IFruitIdentifierService
     {
+        string GetImagePrediction(string path);
     }
 }
