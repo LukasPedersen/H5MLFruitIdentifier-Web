@@ -49,7 +49,7 @@ namespace MLIdentifierModel_First
 
         #endregion
 
-        private static string MLNetModelPath = Path.GetFullPath("MLIdentifierModel.mlnet");
+        private static string MLNetModelPath = "C:\\Users\\Aramoniax\\Desktop\\Fruit identifier\\FruitIdentifier-Web\\FruitIdentifier-ServiceLayer\\MLIdentifierModel.mlnet";
 
         public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
 

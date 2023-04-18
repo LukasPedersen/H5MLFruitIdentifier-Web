@@ -4,9 +4,9 @@
 
 <PageTitle>FruitIdentifier</PageTitle>
 
-<img src="@path"/>
-<InputFile OnChange="OnFileChanged" multiple></InputFile>
-<pre>Result: @status</pre>
+<img src="C:\Users\Aramoniax\Desktop\Test images\Bananen-gruen_lead.jpg.935x464_q85.jpg" />
+<InputFile OnChange="OnFileChanged"></InputFile>
+<pre>Status: @status</pre>
 <pre>Result: @result</pre>
 <pre>Path: @path</pre>
 
@@ -16,28 +16,17 @@
     string? result;
     string? path;
 
-    async Task OnFileChanged(InputFileChangeEventArgs e)
+    void OnFileChanged(InputFileChangeEventArgs e)
     {
         status = "Getting Image Prediction";
         path = "C:\\Users\\Aramoniax\\Desktop\\Test images\\";
         try
         {
-            var buffer = new byte[4096];
-            foreach (var file in e.GetMultipleFiles(e.FileCount))
-            {
-                path += file.Name;
-                _ = InvokeAsync(StateHasChanged);
+            path += e.File.Name;
 
-                using var stream = file.OpenReadStream(maxAllowedSize: long.MaxValue);
-                while (true)
-                {
-                    var read = await stream.ReadAsync(buffer);
-                    if (read == 0)
-                        break;
-                }
-                result = FruitService.GetImagePrediction(path);
-                status = "Done";
-            }
+            _ = InvokeAsync(StateHasChanged);
+            result = FruitService.GetImagePrediction(path);
+            status = "Done";
         }
         catch (Exception ex)
         {

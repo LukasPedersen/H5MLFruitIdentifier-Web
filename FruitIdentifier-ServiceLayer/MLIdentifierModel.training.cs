@@ -9,7 +9,7 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Vision;
 using Microsoft.ML;
 
-namespace FruitIdentifier_ServiceLayer
+namespace FruitIdentifier_Web
 {
     public partial class MLIdentifierModel
     {

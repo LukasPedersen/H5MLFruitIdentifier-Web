@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
-namespace FruitIdentifier_ServiceLayer
+namespace FruitIdentifier_Web
 {
     public partial class MLIdentifierModel
     {
@@ -49,7 +49,7 @@ namespace FruitIdentifier_ServiceLayer
 
         #endregion
 
-        private static string MLNetModelPath = "C:\\Users\\Aramoniax\\Desktop\\Fruit identifier\\FruitIdentifier-Web\\FruitIdentifier-ServiceLayer\\MLIdentifierModel.mlnet";
+        private static string MLNetModelPath = Path.GetFullPath("MLIdentifierModel.mlnet");
 
         public static readonly Lazy<PredictionEngine<ModelInput, ModelOutput>> PredictEngine = new Lazy<PredictionEngine<ModelInput, ModelOutput>>(() => CreatePredictEngine(), true);
 
