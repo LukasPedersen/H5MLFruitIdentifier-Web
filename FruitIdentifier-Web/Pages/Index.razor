@@ -3,27 +3,40 @@
 @page "/"
 
 <PageTitle>FruitIdentifier</PageTitle>
-
-<img src="C:\Users\Aramoniax\Desktop\Test images\Bananen-gruen_lead.jpg.935x464_q85.jpg" />
-<InputFile OnChange="OnFileChanged"></InputFile>
-<pre>Status: @status</pre>
-<pre>Result: @result</pre>
-<pre>Path: @path</pre>
-
+<div class="col-10">
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <img style="max-width:50%; max-height:50%;" src="@imgPath" />
+        </div>
+        <InputFile OnChange="OnFileChanged"></InputFile>
+    </div>
+    <br />
+    <div class="row">
+        <div class="">
+            <pre>Status: @status</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <pre>Result: @result</pre>
+        </div>
+    </div>
+</div>
 
 @code {
     string? status = "Awating image";
     string? result;
     string? path;
+    string? imgPath;
 
     void OnFileChanged(InputFileChangeEventArgs e)
     {
         status = "Getting Image Prediction";
-        path = "C:\\Users\\Aramoniax\\Desktop\\Test images\\";
+        result = "";
         try
         {
-            path += e.File.Name;
-
+            path = $"C:\\Users\\Aramoniax\\Desktop\\Fruit identifier\\FruitIdentifier-Web\\FruitIdentifier-Web\\wwwroot\\Images\\{e.File.Name}";
+            imgPath = $"Images/{e.File.Name}";
             _ = InvokeAsync(StateHasChanged);
             result = FruitService.GetImagePrediction(path);
             status = "Done";

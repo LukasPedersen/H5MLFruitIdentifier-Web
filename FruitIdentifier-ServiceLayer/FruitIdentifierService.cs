@@ -26,7 +26,11 @@ namespace FruitIdentifier_ServiceLayer
 
             foreach (var score in sortedScoresWithLabel)
             {
-                returnVal += $"{score.Key,-40}{(score.Value * 100).ToString("00") + "%",-20}\n";
+                if (score.Value >= 0.05)
+                {
+                    returnVal += $"{score.Key,-40}{(score.Value * 100).ToString("00") + "%",-20}\n";
+
+                }
             }
             return returnVal;
         }

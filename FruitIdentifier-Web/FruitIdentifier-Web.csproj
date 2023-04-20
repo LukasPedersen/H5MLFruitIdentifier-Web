@@ -6,7 +6,51 @@
     <RootNamespace>FruitIdentifier_Web</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Content Remove="wwwroot\Images\fdsd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Images\37484.jpg" />
+    <None Include="wwwroot\Images\610V5Z2hpEL.jpg" />
+    <None Include="wwwroot\Images\76tujyhg.jpg" />
+    <None Include="wwwroot\Images\987iu.jpg" />
+    <None Include="wwwroot\Images\ap1.jpg" />
+    <None Include="wwwroot\Images\ap2.jpg" />
+    <None Include="wwwroot\Images\ap3.jpg" />
+    <None Include="wwwroot\Images\banana-bread-5.jpg" />
+    <None Include="wwwroot\Images\Bananen-gruen_lead.jpg.935x464_q85.jpg" />
+    <None Include="wwwroot\Images\bread.jpg" />
+    <None Include="wwwroot\Images\cfdghgfhdkfj.jpg" />
+    <None Include="wwwroot\Images\clementin.jpg" />
+    <None Include="wwwroot\Images\dsa22.jpg" />
+    <None Include="wwwroot\Images\dsadasd.jpg" />
+    <None Include="wwwroot\Images\dsads.jpg" />
+    <None Include="wwwroot\Images\dsadsdsd.jpg" />
+    <None Include="wwwroot\Images\dsasd.jpg" />
+    <None Include="wwwroot\Images\fdsd.jpg" />
+    <None Include="wwwroot\Images\fdsfds.jpg" />
+    <None Include="wwwroot\Images\fsgdn.jpg" />
+    <None Include="wwwroot\Images\gfft.jpg" />
+    <None Include="wwwroot\Images\ghnm.jpg" />
+    <None Include="wwwroot\Images\hjmj,.jpg" />
+    <None Include="wwwroot\Images\jgj,bm.jpg" />
+    <None Include="wwwroot\Images\Mybanana.jpg" />
+    <None Include="wwwroot\Images\Mybanana2.jpg" />
+    <None Include="wwwroot\Images\oiylmn.jpg" />
+    <None Include="wwwroot\Images\orange.jpg" />
+    <None Include="wwwroot\Images\rfsd.jpg" />
+    <None Include="wwwroot\Images\rrrr.jpg" />
+    <None Include="wwwroot\Images\rrw1.jpg" />
+    <None Include="wwwroot\Images\rtghn.jpg" />
+    <None Include="wwwroot\Images\sdcvb.jpg" />
+    <None Include="wwwroot\Images\strgdcgvm.jpg" />
+    <None Include="wwwroot\Images\tilhjk.jpg" />
+    <None Include="wwwroot\Images\tomatoes-1024x699.png" />
+    <None Include="wwwroot\Images\tomatoes-canva.jpg" />
+    <None Include="wwwroot\Images\uikl-.jpg" />
+    <None Include="wwwroot\Images\Untitled1212.png" />
+    <None Include="wwwroot\Images\w4eydth.jpg" />
+    <None Include="wwwroot\Images\Winesap-reduced-600x444.jpg" />
+    <None Include="wwwroot\Images\zx.jpg" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="2.0.0" />
@@ -15,10 +59,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FruitIdentifier-ServiceLayer\FruitIdentifier-ServiceLayer.csproj" />
-  </ItemGroup>
-  <ItemGroup Label="MLIdentifierModel">
-    <None Include="MLIdentifierModel.mlnet">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>
