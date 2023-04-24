@@ -21,15 +21,29 @@ namespace FruitIdentifier_ServiceLayer
 
             // Make a single prediction on the sample data and print results.
             var sortedScoresWithLabel = MLIdentifierModel.PredictAllLabels(sampleData);
-            returnVal += $"{"Class",-40}{"Score",-20}\n";
-            returnVal += $"{"-----",-40}{"-----",-20}\n";
+            returnVal += $"{"Class", -20}{"Score",-20}\n";
+            returnVal += $"{"--------------------",-20}{"--------------------",-20}\n";
 
+            bool first = true;
             foreach (var score in sortedScoresWithLabel)
             {
-                if (score.Value >= 0.05)
+                if (score.Value > 0.01)
                 {
-                    returnVal += $"{score.Key,-40}{(score.Value * 100).ToString("00") + "%",-20}\n";
+                    if (first)
+                    {
+                        if (score.Key == "Rotten")
+                        {
+                            returnVal += $"This is: {score.Key} \n";
+                        }
+                        else
+                        {
+                            returnVal += $"This is a: {score.Key} \n";
+                        }
 
+                        first = false;
+                    }
+
+                    returnVal += $"{score.Key,-20}: {(score.Value * 100).ToString("00") + "%",-20}\n";
                 }
             }
             return returnVal;
