@@ -1,32 +1,88 @@
 ﻿@inject FruitIdentifierService FruitService;
 
+@using System.Text.Json;
+@using System.Text.Json.Serialization;
+@using Newtonsoft.Json;
+
 @page "/"
 
 <PageTitle>FruitIdentifier</PageTitle>
+<div class="col-10">
+    <div class="row">
+        <div class="d-flex justify-content-center">
+            <img style="max-width:50%; max-height:50%;" src="@imgPath" />
+        </div>
+        <InputFile OnChange="OnFileChanged"></InputFile>
+    </div>
+    <br />
+    <div class="row">
+        <div class="">
+            <pre>Status: @status</pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <pre>Result: @result</pre>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="">
+            @{
+                <h4>Fruit info</h4>
+                <pre>Name: @fruit.Name</pre>
+                <pre>Family: @fruit.Family</pre>
+                <pre>Order: @fruit.Order</pre>
+                <pre>Genus: @fruit.Genus</pre>
 
-<img src="C:\Users\Aramoniax\Desktop\Test images\Bananen-gruen_lead.jpg.935x464_q85.jpg" />
-<InputFile OnChange="OnFileChanged"></InputFile>
-<pre>Status: @status</pre>
-<pre>Result: @result</pre>
-<pre>Path: @path</pre>
 
+                <h5>Fruit nutritions: per 100g</h5>
+                <pre>Calories: @fruit.FruitNutritions.Calories g.</pre>
+                <pre>Fat: @fruit.FruitNutritions.Fat g.</pre>
+                <pre>Sugar: @fruit.FruitNutritions.Sugar g.</pre>
+                <pre>Carbohydrates: @fruit.FruitNutritions.Carbohydrates g.</pre>
+                <pre>Protein: @fruit.FruitNutritions.Protein g.</pre>
+            }
+            
+        </div>
+    </div>
+</div>
 
 @code {
+    HttpClient client = new();
+    FruitObject fruit = new();
     string? status = "Awating image";
     string? result;
     string? path;
+    string? imgPath;
 
-    void OnFileChanged(InputFileChangeEventArgs e)
+    async void OnFileChanged(InputFileChangeEventArgs e)
     {
         status = "Getting Image Prediction";
-        path = "C:\\Users\\Aramoniax\\Desktop\\Test images\\";
+        result = "";
         try
         {
-            path += e.File.Name;
-
+            path = $"C:\\Users\\Aramoniax\\Desktop\\Fruit identifier\\FruitIdentifier-Web\\FruitIdentifier-Web\\wwwroot\\Images\\{e.File.Name}";
+            imgPath = $"Images/{e.File.Name}";
             _ = InvokeAsync(StateHasChanged);
             result = FruitService.GetImagePrediction(path);
-            status = "Done";
+            string temp = result.Substring(result.IndexOf(':'), '\n').Trim();
+            string temp2 = temp.TrimStart(':');
+            string fruitName = temp2.TrimStart(' ').Trim(' ').ToLower();
+
+            try
+            {
+                fruit = await client.GetFromJsonAsync<FruitObject>($"https://fruityvice.com/api/fruit/{fruitName}");
+            }
+            catch (Exception)
+            {
+                fruit.Name = "No fruit info found";
+                throw;
+            }
+            finally
+            {
+                StateHasChanged();
+            }
         }
         catch (Exception ex)
         {
