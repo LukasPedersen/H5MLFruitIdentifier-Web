@@ -3,7 +3,7 @@
   "DataSource": {
     "Type": "Folder",
     "Version": 1,
-    "FolderPath": "C:\\Users\\Aramoniax\\Desktop\\Fruit identifier\\FruitIdentifier-Web\\FruitIdentifier-Web\\Data\\Fruit"
+    "FolderPath": "C:\\Users\\Aramoniax\\Desktop\\Fruit identifier\\FruitIdentifier-Web\\MLIdentifierModel-First\\Data\\Fruit"
   },
   "Environment": {
     "Type": "LocalCPU",
@@ -17,8 +17,8 @@
         "Version": 1,
         "Type": "Trial",
         "TrainerName": "ImageClassificationMulti",
-        "Score": 0.78125,
-        "RuntimeInSeconds": 91.195,
+        "Score": 0.77966101694915257,
+        "RuntimeInSeconds": 123.7,
         "Parameter": {
           "_SCHEMA_": "e0 * e1 * e2",
           "e0": {
