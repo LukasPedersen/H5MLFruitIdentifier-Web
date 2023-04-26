@@ -4,6 +4,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>FruitIdentifier_Web</RootNamespace>
+    <UserSecretsId>9db3774c-9142-4af4-bbb2-c423947346c1</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="wwwroot\Images\fdsd.jpg" />
@@ -53,6 +54,7 @@
     <None Include="wwwroot\Images\zx.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.ML" Version="2.0.0" />
     <PackageReference Include="Microsoft.ML.Vision" Version="2.0.0" />
     <PackageReference Include="SciSharp.TensorFlow.Redist" Version="2.3.1" />
