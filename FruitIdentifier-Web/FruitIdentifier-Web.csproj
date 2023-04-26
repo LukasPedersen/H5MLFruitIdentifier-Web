@@ -16,9 +16,4 @@
   <ItemGroup>
     <ProjectReference Include="..\FruitIdentifier-ServiceLayer\FruitIdentifier-ServiceLayer.csproj" />
   </ItemGroup>
-  <ItemGroup Label="MLIdentifierModel">
-    <None Include="MLIdentifierModel.mlnet">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>
